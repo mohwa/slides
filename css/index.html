@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>CSS</title>
+
+    <meta name="description" content="HTML">
+    <meta name="author" content="mohwa">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/reveal.min.css" type='text/css'>
+    <link rel="stylesheet" href="css/theme/adobe-theme.css?122" type='text/css'>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/css/zenburn.min.css">
+    <script>
+        document.write( '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+
+        .tomato { color:#edca71; }
+
+		.reveal ol li{
+			line-height:1.5em;
+		}
+
+		.reveal p {
+			line-height:1.3em;
+		}
+
+		.reveal .gray {
+			color:rgba(255, 255, 255, 0.7) !important;
+		}
+
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>CSS</h1>
+        </section>
+
+        <section>
+            <h2 style="margin-top:0;margin-bottom:1.5em">Agenda</h2>
+            <ol style="list-style-type:decimal;text-align:left;margin-left:40px">
+	            <li style="padding-left:0.5em">CSS 의미</li>
+	            <li style="padding-left:0.5em">Selector</li>
+	            <li style="padding-left:0.5em">Typography</li>
+	            <li style="padding-left:0.5em">Layout</li>
+	            <li style="padding-left:0.5em">Positioning</li>
+	            <li style="padding-left:0.5em">Q & A</li>
+	            <li style="padding-left:0.5em">(정보)를 표현해보자</li>
+	        </ol>
+            <!--<p class="fragment" data-fragment-index="2" style="text-align:left"><em><span class="tomato">UI</span>(사용자 인터페이스)는 곤란에 처한 초보자가 `10초` 안에 이해할 수 있도록 단순해야한다.</em></p>-->
+        </section>
+
+        <section>
+            <h1>CSS 의미</h1>
+        </section>
+
+		<section>
+            <h2><a href="http://codepen.io/yanione/pen/qRwvGr" target="_blank">Cascading</a><span style="position:relative;top:5px;left:-15px;vertical-align: middle"> Style Sheets</span></h2>
+            <p class="fragment" data-fragment-index="1">스타일은 <span class="tomato">상위</span>에서 <span class="tomato">하위</span>로 <span class="tomato">상속</span>된다.</p>
+		</section>
+        <section>
+            <h2><span style="vertical-align: middle"></span> <a href="http://codepen.io/yanione/pen/ygrrMe" target="_blank">왜</a></span> <span style="vertical-align: middle">만들었을까?</span></h2>
+            <p class="fragment" data-fragment-index="1"><span class="tomato">정보</span>(HTML)를 시각적으로 꾸미기 위해 <span class="tomato">고안</span>되었다.</p>
+        </section>
+        <section>
+            <h2 style="font-size:3rem">그럼 <a href="http://codepen.io/yanione/pen/vgMMrQ" target="_blank">HTML<span class="gray">에는 디자인 요소가 없었을까?</span></a></h2>
+            <p class="fragment" data-fragment-index="1"><span class="tomato">최소한</span>의 디자인 요소는 <span class="tomato">존재</span>했다.</p>
+        </section>
+        <!--<section>-->
+            <!--<h2 style="font-size:3.5rem"><span style="vertical-align: middle">근데 왜 </span><a href="http://codepen.io/yanione/pen/qRwvGr" target="_blank">Cascading</a><span style="vertical-align: middle">이라고 말할까?</span></h2>-->
+            <!--<p class="fragment" data-fragment-index="1">스타일은 <span class="tomato">상위</span>에서 <span class="tomato">하위</span>로 <span class="tomato">상속</span>되기 때문이다.</p>-->
+        <!--</section>-->
+        <section>
+            <h1>Selector</h1>
+        </section>
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ygrrMe" target="_blank"><img src="http://localhost:8080/git/slides/css/img/selector.gif" /></a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">선택</span>하고 <span class="tomato">선언</span>한다.</p>
+        </section>
+
+        <section>
+            <h2><span class="tomato">Selector</span> 의 종류</h2>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/wgZLwr" target="_blank">* { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">전체</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ygrrMe" target="_blank">h1 { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">타입</span>(or 태그) 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/wgZLwr" target="_blank">.class { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">클래스</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/wgZLwr" target="_blank">#id { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">아이디</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ZLZdYV" target="_blank">ul li { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">하위</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ZLZdYV" target="_blank">ul > li { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">자식</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ZLZdYV" target="_blank">ul, ol { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">요소</span>(Element, Element) 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/PWgMNx" target="_blank">E + F { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">인접 형제</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/PWgMNx" target="_blank">E ~ F { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">일반 형제</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ZLNzyr" target="_blank">E[attr] { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">속성</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/WRBezO" target="_blank">E:link { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">링크</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/wgbwEJ" target="_blank">E:active { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">동적</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/YNbPRR" target="_blank">E:nth-child(n) { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">가상</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/PWvqWP" target="_blank">E:checked { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">상태</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/vgwObN" target="_blank">E:before { color: red; }</a></h2>
+            <p class="fragment" data-fragment-index="1" style="font-size:3rem"><span class="tomato">가상 엘리먼트</span> 선택자</p>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/aprdrq" target="_blank">Selector 우선 순위</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">!important > style > id > class > type(or tag) > <span style="position:relative;vertical-align: middle;top:2px">*</span></span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/MJdOZM" target="_blank">점수 매기기</a></h2>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom:7rem"><a href="https://ko.wikipedia.org/wiki/%ED%83%80%EC%9D%B4%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BC" target="_blank">Typo graphy</a></h1>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">쓰여진 <span class="tomato">정보</span>를 정확히 <span class="tomato">전달</span>하는것</span>
+
+        </section>
+
+        <section>
+            <h2 style="font-size:2.7rem"><a href="http://codepen.io/yanione/pen/ygdMNW" target="_blank">font-family: 'Nanum Gothic', sans-serif, serif</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem"><span class="tomato">폰트</span>를 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ygdMNW" target="_blank">font-size: 20px</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">폰트의 <span class="tomato">크기</span>를 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ygdMNW" target="_blank">color: red</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">폰트의 <span class="tomato">컬러</span>를 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/ygdMNW" target="_blank">text-align: left</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">폰트를 <span class="tomato">정렬</span>한다.</span>
+        </section>
+
+        <!--<section>-->
+            <!--<h2><a href="http://codepen.io/yanione/pen/aprdrq" target="_blank">px</a></h2>-->
+            <!--<span class="fragment" data-fragment-index="1" style="font-size:2.5rem"><span class="tomato">모니터 해상도</span>에 따른 상태적 크기를 가진다.</span>-->
+        <!--</section>-->
+
+        <!--<section>-->
+            <!--<h2><a href="http://codepen.io/yanione/pen/aprdrq" target="_blank">%, em, rem</a></h2>-->
+            <!--<span class="fragment" data-fragment-index="1" style="font-size:2.5rem"><span class="tomato">브라우저 폰트 크기</span>에, 따른 상태적 크기를 가진다.</span>-->
+        <!--</section>-->
+
+
+        <section>
+            <h1>Layout</h1>
+        </section>
+
+        <section>
+            <h2 style="margin:0.3em" ><a href="http://codepen.io/yanione/pen/GrbWXY" target="_blank">Inline Element</a></h2>
+            <p><img src="img/inline-element.png" width="700px" /></p>
+            <p><span class="fragment" data-fragment-index="1" style="font-size:2.5rem">컨텐츠 <span class="tomato">영역</span>을 사용한다.</span></p>
+        </section>
+
+        <section>
+            <h2 style="margin:0.3em"><a href="http://codepen.io/yanione/pen/GrbWXY" target="_blank">Block-Level Element</a></h2>
+            <p><img src="img/block-level-element.png" width="700px" height="422" /></p>
+            <p><span class="fragment" data-fragment-index="1" style="font-size:2.5rem"><span class="tomato">부모 엘리먼트</span>가 허용하는 가로 공간 <span class="tomato">전체</span>를 사용한다.</span></p>
+        </section>
+
+        <section>
+            <h2>Box Model</h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">태그의 <span class="tomato">위치</span>, <span class="tomato">크기</span>, <span class="tomato">여백</span>등을 지정한다.</span>
+        </section>
+
+        <section>
+            <img src="img/box-model-2.png" style="margin:0px" width="700px">
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/VPJpNd" target="_blank">{width: 100px; height: 100px;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">태그의 가로 / 세로 <span class="tomato">폭</span>을 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/VPJpNd" target="_blank">{border: #DDD 1px solid;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">태그의 <span class="tomato">외각선</span>을 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/VPJpNd" target="_blank">{margin: 0 0 0 0;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">태그와, 태그 사이의 <span class="tomato">여백</span>을 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/VPJpNd" target="_blank">{padding: 0 0 0 0;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">컨텐츠와, 외각선 사이의 <span class="tomato">여백</span>을 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/egwXNr" target="_blank">{box-sizing: content-box;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">엘리먼트의 <span class="tomato">width</span>, <span class="tomato">height</span> 크기를 결정한다.</span>
+        </section>
+
+        <section>
+            <h2>content-box</h2>
+        </section>
+
+        <section>
+            <img src="img/box-sizing-1.png" style="margin:0px" width="700px">
+        </section>
+
+        <section>
+            <h2>border-box</h2>
+        </section>
+
+        <section>
+            <img src="img/box-sizing-2.png" style="margin:0px" width="700px">
+        </section>
+
+        <section>
+            <h1>Positioning</h1>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/WRqZxQ" target="_blank">{position: static;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem">별도 <span class="tomato">위치</span>가 지정되지 않는다.(초기값이 반영한다)</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/WRqZxQ" target="_blank">{position: relative;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem"><span class="tomato">부모 엘리먼트</span>를 기준으로 <span class="tomato">상대적</span> 위치를 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/WRqZxQ" target="_blank">{position: absolute;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2rem"><span class="tomato">부모 엘리먼트</span>를 기준으로 <span class="tomato">절대적</span> 위치를 지정한다.</span>
+        </section>
+
+        <section>
+            <h2><a href="http://codepen.io/yanione/pen/WRqZxQ" target="_blank">{position: fixed;}</a></h2>
+            <span class="fragment" data-fragment-index="1" style="font-size:2.5rem"><span class="tomato">브라우저 화면</span>을 기준으로 <span class="tomato">상대적</span> 위치를 지정한다.</span>
+        </section>
+
+		<section>
+            <h2 style="margin:0.3em" ><a href="http://codepen.io/yanione/pen/rjEGod" target="_blank">{float: left;}</a></h2>
+            <p><img src="img/float.png" width="300px" /></p>
+            <p><span class="fragment" data-fragment-index="1" style="font-size:2.5rem"><span class="tomato">엘리먼트</span>를 원하는 위치에 <span class="tomato">정렬</span> 시킨다.</span></p>
+        </section>
+
+        <section>
+            <h1>q & a</h1>
+        </section>
+
+        <section>
+            <h1 style="font-size: 6rem"><span class="tomato">정보</span>를 표현해보자</h1>
+            <!--
+               만들고자하는 사이트를 검색해보고, 그 사이트의 구조의 의미있게 작성해보기
+            -->
+        </section>
+
+        <section>
+            <h2 style="margin-top:0;margin-bottom:1.5em">참고 사이트</h2>
+            <ol style="list-style: none;text-align:left;">
+                <li style="padding-left:0.5em"><a href="https://www.w3schools.com/Css/" target="_blank">CSS Tutorial</a></li>
+	            <li style="padding-left:0.5em"><a href="https://developer.mozilla.org/ko/docs/Web/CSS/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%84%A4%EB%A0%89%ED%84%B0" target="_blank">선택자</a></li>
+	            <li style="padding-left:0.5em"><a href="https://www.w3schools.com/css/css_font.asp" target="_blank">CSS Fonts</a></li>
+	            <li style="padding-left:0.5em"><a href="https://medium.com/@safe1981/css-position%EC%86%8D%EC%84%B1%EC%9D%98-%EC%9D%B4%ED%95%B4-34bdcdbf26f2#.ypht6hdtd" target="_blank">CSS Position속성의 이해</a></li>
+	            <li style="padding-left:0.5em"><a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model" target="_blank">CSS 박스 모델 입문</a></li>
+	            <li style="padding-left:0.5em"><a href="http://naradesign.net/wp/2008/05/27/144/" target="_blank">float을 clear하는 4가지 방법.</a></li>
+	        </ol>
+            <!--<p class="fragment" data-fragment-index="2" style="text-align:left"><em><span class="tomato">UI</span>(사용자 인터페이스)는 곤란에 처한 초보자가 `10초` 안에 이해할 수 있도록 단순해야한다.</em></p>-->
+        </section>
+
+
+        <!--<section>-->
+            <!--<h2>원하는 사이트의 <span class="tomato">구조</span> 만들어보기</h2>-->
+        <!--</section>-->
+
+    </div>
+    <div class="state-background"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/js/reveal.min.js"></script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", init, false);
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    function init(){
+
+        var cblocks = document.querySelectorAll("pre code");
+
+        if(cblocks.length) {
+            for(var i=0, len=cblocks.length; i<len; i++) {
+                var dom = cblocks[i];
+                var html = dom.innerHTML;
+                html = html.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                dom.innerHTML = html;
+            }
+        }
+    }
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        rollingLinks:true,
+        slideNumber: false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        backgroundTransition: 'slide',
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Interpret Markdown in <section> elements
+//            { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+            // Syntax highlight for <code> elements
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+//            { src: 'lib/js/fullscreen-img.js'},
+            // Zoom in and out with Alt+click
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/zoom-js/zoom.min.js', async: true, condition: function() { return !!document.body.classList; } },
+
+
+            // Speaker notes
+//            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+            // Remote control your reveal.js presentation using a touch device
+//            { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+            // MathJax
+//            { src: 'plugin/math/math.js', async: true },
+//            { src: 'socket.io/socket.io.js', async: true },
+//            { src: 'plugin/notes-server/client.js', async: true }
+        ]
+    });
+
+</script>
+</body>
+</html>

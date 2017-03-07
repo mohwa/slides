@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>JS</title>
+
+    <meta name="description" content="HTML">
+    <meta name="author" content="mohwa">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/reveal.min.css" type='text/css'>
+    <link rel="stylesheet" href="css/theme/adobe-theme.css?122" type='text/css'>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/css/zenburn.min.css">
+    <script>
+        document.write( '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+
+        .tomato { color:#edca71; }
+
+		.reveal ol li{
+			line-height:1.5em;
+		}
+
+		.reveal p {
+			line-height:1.5em;
+		}
+
+		.reveal i {
+			line-height:1.5em;
+		}
+
+		.reveal h1{
+		    line-height:1.5em
+		}
+
+	    .reveal h2{
+		    line-height:1.5em
+		}
+
+	    .reveal h3{
+		    line-height:1.5em
+		}
+
+		.reveal .gray {
+			color:rgba(255, 255, 255, 0.7) !important;
+		}
+
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>JavaScript</h1>
+        </section>
+
+        <!--
+       ec 재귀; http://www.datchley.name/recursion-tail-calls-and-trampolines/
+        -->
+
+
+        <section>
+            <h2 style="margin-top:0;margin-bottom:1.5em">Agenda</h2>
+            <ol style="list-style-type:decimal;text-align:left;margin-left:40px;font-size:26px">
+	            <li style="padding-left:0.5em">JavaScript 란</li>
+	            <li style="padding-left:0.5em">ECMAScript</li>
+	            <!--<li style="padding-left:0.5em">객체 지향 언어의 두 가지 줄기</li>-->
+	            <li style="padding-left:0.5em">Execution Context</li>
+	            <li style="padding-left:0.5em">This</li>
+	            <li style="padding-left:0.5em">Lexical Environment</li>
+	            <li style="padding-left:0.5em">Variable 심화</li>
+	            <li style="padding-left:0.5em">Function 심화</li>
+	            <li style="padding-left:0.5em">ScopeChain 과 OuterEnvReference</li>
+	            <li style="padding-left:0.5em">Prototype 위임 과정</li>
+	            <li style="padding-left:0.5em">Q & A</li>
+	            <li style="padding-left:0.5em">사이트에 생명을 불어넣다</li>
+	        </ol>
+            <!--<p class="fragment" data-fragment-index="2" style="text-align:left"><em><span class="tomato">UI</span>(사용자 인터페이스)는 곤란에 처한 초보자가 `10초` 안에 이해할 수 있도록 단순해야한다.</em></p>-->
+        </section>
+
+        <section>
+            <h1>JavaScript 란</h1>
+        </section>
+
+		<section>
+		    <h2 style="font-size:3rem"><span class="tomato">DOM</span>과 <span class="tomato">브라우저</span>를, <span class="tomato">핸들링</span>하기위한 스크립트 언어이다.</h2>
+            <p><a href="https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8" target="_blank">https://ko.wikipedia.org/wiki/자바스크립트</a></p>
+		</section>
+
+        <section>
+            <h1 style="margin-bottom:7rem"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/JavaScript_technologies_overview" target="_blank">ECMAScript</a></h1>
+            <p class="fragment" data-fragment-index="1">(JavaScript)언어 <span class="tomato">기반</span>을 구성하는 <span class="tomato">스크립트 언어</span>이다.</p>
+            <!-- 즉 자바스크립트 표준 스펙이다 -->
+        </section>
+
+        <section>
+            <h1 style="font-size:5.5rem">Execution Context</h1>
+        </section>
+
+        <section>
+            <h2>코드가 <span class="tomato">실행</span>되는 <span class="tomato">환경</span>을 말한다.</h2>
+        </section>
+
+        <section>
+            <h2><span class="tomato">실행 코드</span>의 종류</h2>
+        </section>
+
+        <section>
+            <p><img src="img/executable_code.png" width="700" /></p>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem"><span class="tomato">전역</span> 코드(Global Code)</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em"><span class="tomato">프로그램 레벨</span>에서 실행되는 코드이다.</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/QdeqMb/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem"><span class="tomato">함수</span> 코드(Function Code)</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em"><span class="tomato">함수</span>호출 시, 실행되는 코드이다.</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/GrVMaK/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem"><span class="tomato">Eval</span> 코드(Eval Code)</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em"><span class="tomato">Eval 함수</span>호출 시, 실행되는 코드이다.</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/ZLgaYv/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2><span class="tomato">EC</span>Stack</h2>
+        </section>
+
+        <section>
+            <!-- 링크 있음 -->
+            <h2 style="font-size:3rem"><span class="tomato">ECStack</span>은 일종의 <a href="https://ko.wikipedia.org/wiki/%EC%BD%9C_%EC%8A%A4%ED%83%9D" target="_blank"><span class="tomato">CallStack</span></a>이다.</h2>
+            <!-- callStack: `실행`할 `코드 정보`를 저장하는 Stack 공간 -->
+            <p style="font-size:1.3rem;left:0px"><i class="fragment" data-fragment-index="1"><span class="tomato">CallStack</span> - <span class="tomato">실행</span>할 <span class="tomato">코드 정보</span>를 저장하는 <span class="tomato">Stack</span>이다.</i></p>
+        </section>
+
+        <section>
+            <!-- 링크 있음 -->
+            <h2 style="font-size:3rem"><span class="tomato">ECStack</span>은 <a href="https://ko.wikipedia.org/wiki/%EC%8A%A4%ED%83%9D" target="_blank"><span class="tomato">LIFO</span></a> 자료 구조를 갖는다.</h2>
+        </section>
+
+        <section>
+            <p><img src="img/ec.png" width="500" style="margin-bottom:2em" /></p>
+	        <p style="font-size:1.3rem;left:0px"><i><span class="tomato">Stack</span> 의 바닥에는 항상 <span class="tomato">Global EC</span> 가 존재하며, 가장 상위에는 현재 활성화된 <span class="tomato">EC</span> 가 놓이게된다.</i></p>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Pseudo Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/mRNpxp/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h1 style="font-size:5rem">this</h1>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem"><span class="tomato">This</span> 는 EC 속성중 하나이다.</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Pseudo Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/jygpMw/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem"><span class="tomato">This</span> in the Global Code</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:2.5rem">전역 코드안의 <span class="tomato">This</span>는 항상 <span class="tomato">전역 객체</span> 자신이된다.</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/RKXmJE/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2><span class="tomato">Global Object</span></h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:2rem"><span class="tomato">Built-in 객체</span> 및 전역 코드의 모든 <span class="tomato">식별자 정보</span>를 가진다.</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/RpbPaJ/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+
+        <section>
+            <h2 style="font-size:3rem"><span class="tomato">This</span> in the Function Code</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:2.4rem">함수 코드안의 <span class="tomato">This</span>는 <span class="tomato">함수 호출 방식</span>에 의해 달라진다.</h2>
+        </section>
+
+        <section>
+            <h2><span class="tomato">기본</span> 바인딩</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/xgvNmW/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2><span class="tomato">NEW</span> 바인딩</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/OWKKeo/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+
+        <section>
+            <h2><span class="tomato">암시적</span> 바인딩</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/vxBBNR/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2><span class="tomato">명시적</span> 바인딩</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/KWPPMK/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2><span class="tomato">new</span> 연산자 매커니즘</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/xqKxbJ/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <!-- VariableEnv 는 별도로 학습하길 바라며, 이 강의에서는 LexicalEnv 에 집중하도록 하겠다 -->
+            <h1 style="font-size:5rem">Lexical Environment</h1>
+        </section>
+
+        <section>
+            <p><img src="img/lexicalEnv.png?333" width="900" /></p>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Pseudo Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/bgXvwB/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem">Components of <span class="tomato">Lexical Environment</span></h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Pseudo Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/JEgLyz/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2 style="font-size:4rem"><span class="tomato">LexicalEnv</span> of Global Code</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source & Pseudo Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/WpeNLZ/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2 style="font-size:4rem"><span class="tomato">LexicalEnv</span> of Function Code</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source & Pseudo Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/aJobMx/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h1><span class="tomato">Variable</span> 심화</h1>
+        </section>
+
+        <section>
+            <h2 style="font-size:2.5rem"><span class="tomato">변수</span>는 오직 <span class="tomato">VAR</span> 키워드를 통해서만 선언된다.</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/BWBNea/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2><span class="tomato">변수</span> 초기화</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/aJoOeY/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h1><span class="tomato">Function</span> 심화</h1>
+        </section>
+
+        <section>
+            <h2>함수 <span class="tomato">선언식</span></h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:2.5rem"><span class="tomato">함수 정의</span>를 나타내는 문장으로 해석되며, <span class="tomato">수행결과</span>가 존재하지 않는다.</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/xqKwEa/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2>함수 <span class="tomato">표현식</span></h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:2.5rem"><span class="tomato">함수 표현식</span>은 기본적으로 <span class="tomato">표현식 위치</span>에만 정의할 수 있다.</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/qrWbRO/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2 style="font-size:2.5rem"><span class="tomato">기명 함수 표현식</span>의 <span class="tomato">함수 이름</span>은 <span class="tomato">GlobalObject</span>의 속성으로 추가되지 않는다.</h2>
+        </section>
+
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/PpYZpJ/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h1 style="font-size:3rem"><span class="tomato">Scope Chain</span>과 <span class="tomato">Outer</span> Env Reference</h1>
+        </section>
+
+        <section>
+            <h2>함수 <span class="tomato">생성</span>시점</h2>
+        </section>
+
+        <section>
+            <h2 style="font-size:4rem">[[SCOPE]]</h2>
+        </section>
+
+        <section style="text-align: left">
+            <p><i><span style="font-size:2rem">함수 <span class="tomato">생성</span> 시 [[Scope]] 속성이 생성된다.</span></i></p>
+            <br>
+            <p><i><span class="fragment" data-fragment-index="1" style="font-size:2rem">[[Scope]] 속성은 직접적인 접근이 <span class="tomato">불가능</span>하며, <span class="tomato">초기화</span>된 값은 변경되지 않는다.</span></i></p>
+            <br>
+            <p><i><span class="fragment" data-fragment-index="2" style="font-size:2rem">[[Scope]] 속성은 <span class="tomato">상위 유효범위</span>에 있는 <span class="tomato">LexicalEnv</span> 를 참조한다.</span></i></p>
+
+        </section>
+
+        <section>
+            <p><img src="img/scopeProperty.png" width="700" /></p>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source & Pseudo Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/JWPXdW/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h2>함수 <span class="tomato">호출</span>시점</h2>
+        </section>
+
+        <section>
+            <p><img src="img/fnEC1.png" width="700" /></p>
+        </section>
+
+        <section>
+            <p><img src="img/fnEC2.png" width="700" /></p>
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source & Pseudo Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/qrWNYw/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+        <section>
+            <h1 style="font-size:5rem;"><span class="tomato">Prototype</span> 위임 과정</h1>
+        </section>
+
+        <section style="text-align: left">
+            <p><i><span style="font-size:2rem">JavaScript는 <span class="tomato">프로토타입 기반 언어</span>의 특징인 <span class="tomato">위임 과정</span>을 따른다.</span></i></p>
+            <br>
+            <p><i><span class="fragment" data-fragment-index="1" style="font-size:2rem"><span class="tomato">위임 과정</span>이란 <span class="tomato">객체</span>들간의 <span class="tomato">원형 복제 과정</span>을 말한다.</span></i></p>
+            <br>
+            <p><i><span class="fragment" data-fragment-index="2" style="font-size:2rem">위임된 <span class="tomato">객체 원형</span>은 그 객체의 <span class="tomato">특징</span>(속성, 메서드)들을 <span class="tomato">공유</span>하기위해 사용된다.</span></i></p>
+
+        </section>
+
+        <section>
+            <h2 style="font-size:3rem;margin-bottom:1em">Source Code</h2>
+			<iframe height='465' scrolling='no' title='JS - #8' src='//codepen.io/yanione/embed/NpKRRY/?height=465&theme-id=0&default-tab=js&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/yanione/pen/QdeqMb/'>JS - #8</a> by mohwa (<a href='http://codepen.io/yanione'>@yanione</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+        </section>
+
+
+        <section>
+            <h1>q & a</h1>
+        </section>
+
+        <section>
+            <h1 style="font-size: 5rem">사이트에 <span class="tomato">생명</span>을 불어넣다</h1>
+            <!--
+               만들고자하는 사이트를 검색해보고, 그 사이트의 구조의 의미있게 작성해보기
+            -->
+        </section>
+
+    </div>
+    <div class="state-background"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/js/reveal.min.js"></script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", init, false);
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    function init(){
+
+        var cblocks = document.querySelectorAll("pre code");
+
+        if(cblocks.length) {
+            for(var i=0, len=cblocks.length; i<len; i++) {
+                var dom = cblocks[i];
+                var html = dom.innerHTML;
+                html = html.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                dom.innerHTML = html;
+            }
+        }
+    }
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        rollingLinks:true,
+        slideNumber: false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        backgroundTransition: 'slide',
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Interpret Markdown in <section> elements
+//            { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+            // Syntax highlight for <code> elements
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+//            { src: 'lib/js/fullscreen-img.js'},
+            // Zoom in and out with Alt+click
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/zoom-js/zoom.min.js', async: true, condition: function() { return !!document.body.classList; } },
+
+
+            // Speaker notes
+//            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+            // Remote control your reveal.js presentation using a touch device
+//            { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+            // MathJax
+//            { src: 'plugin/math/math.js', async: true },
+//            { src: 'socket.io/socket.io.js', async: true },
+//            { src: 'plugin/notes-server/client.js', async: true }
+        ]
+    });
+
+</script>
+</body>
+</html>

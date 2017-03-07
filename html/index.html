@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>HTML</title>
+
+    <meta name="description" content="HTML">
+    <meta name="author" content="mohwa">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/reveal.min.css" type='text/css'>
+    <link rel="stylesheet" href="css/theme/adobe-theme.css?122" type='text/css'>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/css/zenburn.min.css">
+    <script>
+        document.write( '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+
+        .tomato { color:#edca71; }
+
+		.reveal ol li{
+			line-height:1.5em;
+		}
+
+		.reveal p {
+			line-height:1.3em;
+		}
+
+		.reveal .gray {
+			color:rgba(255, 255, 255, 0.7) !important;
+		}
+
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>HTML</h1>
+        </section>
+
+        <section>
+            <h2 style="margin-top:0;margin-bottom:1.5em">Agenda</h2>
+            <ol style="list-style-type:decimal;text-align:left;margin-left:40px;font-size:30px">
+                <li style="padding-left:0.5em">환경 구성</li>
+	            <li style="padding-left:0.5em">HTML 의미</li>
+	            <li style="padding-left:0.5em">언어란</li>
+	            <li style="padding-left:0.5em">DTD </li>
+	            <li style="padding-left:0.5em">기본 문법</li>
+	            <li style="padding-left:0.5em">주요 태그와 속성들</li>
+	            <li style="padding-left:0.5em">의미 있게 작성하기</li>
+	            <li style="padding-left:0.5em">프레임 만들기</li>
+	            <li style="padding-left:0.5em">Q & A</li>
+	            <li style="padding-left:0.5em">실습</li>
+	        </ol>
+            <!--<p class="fragment" data-fragment-index="2" style="text-align:left"><em><span class="tomato">UI</span>(사용자 인터페이스)는 곤란에 처한 초보자가 `10초` 안에 이해할 수 있도록 단순해야한다.</em></p>-->
+        </section>
+
+        <section>
+            <h1>환경 구성</h1>
+        </section>
+
+        <section>
+            <ol style="list-style:inherit;text-align:left;">
+                <!-- 30일 무료 버전 받기 -->
+                <li style="padding-left:0.5em"><a href="https://www.jetbrains.com/webstorm/?fromMenu">WebStorm 설치</a></li>
+                <li style="padding-left:0.5em"><a href="https://www.google.com/chrome/browser/desktop/">Chrome Browser 설치</a></li>
+	        </ol>
+        </section>
+
+        <section>
+            <h1>HTML 의미</h1>
+        </section>
+
+		<section>
+            <h2><a href="https://ko.wikipedia.org/wiki/HTML" target="_blank">HyperText <span class="gray">Markup Language</span></a></h2>
+		</section>
+
+        <section>
+            <h2><a href="https://ko.wikipedia.org/wiki/%ED%95%98%EC%9D%B4%ED%8D%BC%ED%85%8D%EC%8A%A4%ED%8A%B8" target="_blank">HyperText</a></h2>
+            <p class="fragment" data-fragment-index="1" style="text-align:left"><span class="tomato">하이퍼링크</span>를 통해, 독자가 한 문서에서 다른 문서로 즉시 접근할 수 있는 <span class="tomato">텍스트</span>를 말한다.</p>
+            <br />
+            <!--<p class="fragment" data-fragment-index="2" style="text-align:left"><em><span class="tomato">UI</span>(사용자 인터페이스)는 곤란에 처한 초보자가 `10초` 안에 이해할 수 있도록 단순해야한다.</em></p>-->
+        </section>
+
+        <section>
+            <h2>Markup</h2>
+            <p class="fragment" data-fragment-index="1"><span class="tomato">표기 방식</span></p>
+            <br />
+            <!--<p class="fragment" data-fragment-index="2" style="text-align:left"><em><span class="tomato">UI</span>(사용자 인터페이스)는 곤란에 처한 초보자가 `10초` 안에 이해할 수 있도록 단순해야한다.</em></p>-->
+        </section>
+
+        <section>
+            <h2>Language</h2>
+            <p class="fragment" data-fragment-index="1"><span class="tomato">언어</span></p>
+            <br />
+            <!--<p class="fragment" data-fragment-index="2" style="text-align:left"><em><span class="tomato">UI</span>(사용자 인터페이스)는 곤란에 처한 초보자가 `10초` 안에 이해할 수 있도록 단순해야한다.</em></p>-->
+        </section>
+
+        <section>
+            <span class="tomato">HyperText</span> 를 만들 수 있는, <span class="tomato">표기 방식</span>을 가진 <span class="tomato">언어</span>를 말한다.
+        </section>
+        <section>
+            <h1>언어란</h1>
+        </section>
+        <section>
+            <h2><span class="tomato">소통</span>을 위한, (암묵적)<span class="tomato">약속</span>이다.</h2>
+        </section>
+        <section>
+            <h2>프로그래밍 <span class="tomato">언어</span>란?</h2>
+            <p class="fragment" data-fragment-index="1">사람과, 컴퓨터간의 <span class="tomato">소통</span>을 위한 <span class="tomato">약속</span>이다.</p>
+        </section>
+        <section>
+            <h2>언어가 가지는 <span class="tomato">문법</span>이란?</h2>
+            <p class="fragment" data-fragment-index="1">그 약속을 이루는 <span class="tomato">규칙</span>들.</p>
+        </section>
+        <section>
+            <h2 style="font-size: 3.5rem;">그 <span class="tomato">규칙</span>들은 누가 만들어내는가?</h2>
+        </section>
+        <section>
+            <h1><a href="https://ko.wikipedia.org/wiki/W3C" target="_blank">W3C</a></h1>
+            <!--<p class="fragment" data-fragment-index="1"><a href="https://www.w3.org/TR/html4/strict.dtd" target="_blank">https://www.w3.org/TR/html4/strict.dtd</a></p>-->
+
+            <!-- 즉 정해진 표준(인터페이스)에 의해, 각 브라우저 벤더들이 자신만의 브라우저들을 만들고 있는것이다. -->
+        </section>
+
+        <section>
+            <h1><a href="https://www.w3schools.com/tags/tag_doctype.asp" target="_blank" style="color:white">DTD 란</a></h1>
+            <!--<p class="fragment" data-fragment-index="1"><span class="tomato">소통</span>을 위한, (암묵적)<span class="tomato">약속</span></p>-->
+        </section>
+
+        <section>
+            <h2>문서의 <span class="tomato">형식</span>을 정의한다.</h2>
+            <p class="fragment" data-fragment-index="1"><a href="https://www.w3.org/TR/html4/strict.dtd" target="_blank">https://www.w3.org/TR/html4/strict.dtd</a></p>
+        </section>
+
+        <section>
+            <h2><a href="http://www.martinrinehart.com/frontend-engineering/engineers/html/html-tag-history.html" style="font-size:4rem">언어의 진화</a></h2>
+            <p class="fragment" data-fragment-index="1"><span class="tomato">HTML</span>은, 수 많은 <span class="tomato">진화</span> 과정을 반복하였다.</p>
+
+            <!-- 내가 어떤 `문서 규칙`에 따라, 해당 문서를 작성했는지 브라우저에게 알려주는 행위이다. -->
+        </section>
+
+        <section>
+            <h2><span class="tomato">누구</span>를 위해 선언하는가?</h2>
+            <p class="fragment" data-fragment-index="1" style="font-size: 2rem;text-align:left"><span class="tomato">웹 브라우저</span>에게, 어떤 (HTML)<span class="tomato">표준</span>에 맞춰, 이 문서를 작성했는지 알려준다.</p>
+            <!-- 결국 브라우저가 어떤 방식으로 `렌더링` 해야하는지를 알려주는것이다. -->
+        </section>
+
+        <section>
+            <h2 class="gray"><span class="tomato">어떻게</span> 선언하는가?</a></h2>
+            <a href="http://www.w3schools.com/TAgs/tag_doctype.asp" target="_blank">http://www.w3schools.com/TAgs/tag_doctype.asp</a>
+        </section>
+
+        <section>
+            <h2>적용 사례 1(<span class="tomato">naver.com</span>)</h2>
+        </section>
+
+        <section>
+            <!-- 예제 1(쇼핑몰) -->
+            <img src="img/site1.png" style="margin:0px" width="1000px">
+        </section>
+
+        <section>
+            <h2>적용 사례 2(<span class="tomato">andar.co.kr</span>)</h2>
+        </section>
+
+        <section>
+            <!-- 예제 2(네이버) -->
+            <img src="img/site2.png" style="margin:0px" width="1000px">
+        </section>
+
+        <section>
+            <h1>기본 문법</h1>
+        </section>
+
+        <section>
+            <h2><span class="tomato">&lt;Start Tag&gt;</span>Content<span class="tomato">&lt;/End Tag&gt;</span></h2>
+            <pre class="tag" style="text-align:left;">
+                <code data-trim contenteditable>
+					<!-- a tag -->
+
+					&lt;a href=“linkUrl”&gt;link&lt;/a&gt;
+
+					<!-- input tag -->
+
+					&lt;input type=“text” value="내용" /&gt;
+
+                </code>
+            </pre>
+        </section>
+
+        <section>
+            <h2 style="margin-bottom: 1em">근데 <span class="tomato">태그</span>가 뭐지?</h2>
+            <p class="fragment" data-fragment-index="1">특정 항목(<span class="tomato">옷</span>)을 대표하는 (<span class="tomato">낱말</span> 또는 <span class="tomato">키워드</span>)</p>
+            <span class="fragment" data-fragment-index="1" style="margin-top: 0.5em"><img src="img/tag.png"></span>
+        </section>
+
+        <section>
+            <h2>그럼 HTML <span class="tomato">태그</span>는?<span class="fragment" data-fragment-index="2">(=== <span class="tomato">문법</span>)</span></h2>
+            <p><span class="tomato">HTML</span> 을 대표하는 (<span class="tomato">낱말</span> 또는 <span class="tomato">키워드</span>)</p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px; font-size: 7rem;">주요 태그와 속성들</h1>
+            <!-- 구글 통계 -->
+            <p><a href="https://developers.google.com/webmasters/state-of-the-web/2005/elements" target="_blank" style="font-size: 2rem;">https://developers.google.com/webmasters/state-of-the-web/2005/elements</a></p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/mRvrRb" target="_blank">&lt;html&gt;</a></h1>
+            <p style="margin-bottom: 30px">문서의 <span class="tomato">root</span>(top-level element) 를 의미한다.</p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/mRvrRb" target="_blank">&lt;head&gt;</a></h1>
+            <p style="margin-bottom: 30px">문서 자체를 나타내는 <span class="tomato">정보</span>가 포함된다.</p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/mRvrRb" target="_blank">&lt;title&gt;</a></h1>
+            <p style="margin-bottom: 30px">문서의 <span class="tomato">제목</span>을 포함한다.</p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/XpoxdL" target="_blank">&lt;body&gt;</a></h1>
+            <p style="margin-bottom: 30px">문서의 <span class="tomato">본문</span>을 포함한다.</p>
+        </section>
+
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/XpoxdL" target="_blank">&lt;a&gt;</a></h1>
+            <p style="margin-bottom: 30px">문서에 <span class="tomato">링크</span>를 포함한다.</p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/jyXXmw" target="_blank">&lt;img&gt;</a></h1>
+            <p style="margin-bottom: 30px">문서에 <span class="tomato">이미지</span>를 포함한다.</p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/qRLLxG" target="_blank">&lt;meta&gt;</a></h1>
+            <p style="margin-bottom: 50px">문서 자체를 <span class="tomato">설명</span>한다.</span>(<a href="https://ko.m.wikipedia.org/wiki/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0" target="_blank">Meta Data</a>)</p>
+            <p style="margin-bottom: 30px"><a href="https://gist.github.com/kevinSuttle/1997924" target="_blank" style="font-size:1.5rem">https://gist.github.com/kevinSuttle/1997924</a></p>
+
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/BpEMYQ" target="_blank">&lt;h1&gt; <span style="color:white">~</span> &lt;h6&gt;</a></h1>
+            <p style="margin-bottom: 30px">문단의 <span class="tomato">제목</span>을 포함한다.</p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/MJLoYW" target="_blank">&lt;pr&gt;</a></h1>
+            <p style="margin-bottom: 30px"><span class="tomato">단락</span>을 포함한다.</span></p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/JEwxVE" target="_blank">&lt;br&gt;</a></h1>
+            <p style="margin-bottom: 30px"><span class="tomato">줄바꿈</span>을 위해, 사용된다.</span></p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/oBJVWE" target="_blank">&lt;table&gt;</a></h1>
+            <p style="margin-bottom: 30px">문서에 <span class="tomato">표</span>를 포함한다.</span></p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/oBJVWE" target="_blank">&lt;tr&gt;</a></h1>
+            <p style="margin-bottom: 30px"><span class="tomato">표</span>에 <span class="tomato">행</span>을 포함한다.</span></p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/oBJVWE" target="_blank">&lt;td&gt;</a></h1>
+            <p style="margin-bottom: 30px"><span class="tomato">표</span>에 <span class="tomato">열</span>을 포함한다.</span></p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/YNBQbR" target="_blank">&lt;form&gt;</a></h1>
+            <p style="margin-bottom: 30px">사용자 입력을 위한, <span class="tomato">양식</span>을 포함한다.</span></p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/apXyya" target="_blank">&lt;iframe&gt;</a></h1>
+            <p style="margin-bottom: 30px"><a href="http://html5.clearboth.org/browsers.html#nested-browsing-context" taget="_blank" class="tomato">중첩된 문맥</a>을 포함한다.</span></p>
+        </section>
+
+        <section>
+            <h1 style="font-size: 5rem;">의미 있게 작성하기</h1>
+        </section>
+
+        <section>
+            <h2><span class="tomato">Semantic</span> HTML</h2>
+        </section>
+
+	    <section>
+		    <h2>여기서 <span class="tomato">의미</span>란?</h2>
+		    <p class="fragment" data-fragment-index="1"><span class="tomato">정보</span>로써의 가치를 말한다.</p>
+	    </section>
+
+        <section>
+            <h2><span class="tomato">누구</span>를 위한 <span class="tomato">정보</span>인가?</h2>
+            <p class="fragment" data-fragment-index="1"><span href="https://namu.wiki/w/%ED%81%AC%EB%A1%A4%EB%A7%81" taget="_blank"><span class="tomato">크롤링</span></a> 가능한 모든 엔진들(검색 엔진 등)</p>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/ZLZwba" target="_blank">&lt;p&gt; <span style="color:white">VS</span> &lt;br&gt;</a></h1>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px"><a href="http://codepen.io/yanione/pen/RKOvWX" target="_blank">&lt;ol&gt; <span style="color:white">VS</span> &lt;ul&gt;</a></h1>
+        </section>
+
+        <section>
+            <h1 style="margin-bottom: 80px;font-size: 5rem"><a href="http://codepen.io/yanione/pen/ygrwXw" target="_blank">&lt;div&gt; <span style="color:white">VS</span> &lt;table&gt;</a></h1>
+        </section>
+
+        <section>
+            <h1 style="font-size: 5.5rem;"><a href="http://codepen.io/yanione/pen/dNBqPO" target="_blank">프레임 만들기</a></h1>
+        </section>
+
+        <section>
+            <h1>q & a</h1>
+        </section>
+
+        <section>
+            <h1 style="font-size: 6rem">실습</h1>
+
+            <!-- (의미있게)만들어보기 -->
+            <!--
+               만들고자하는 사이트를 검색해보고, 그 사이트의 구조의 의미있게 작성해보기
+            -->
+        </section>
+
+        <section>
+            <h2 style="margin-top:0;margin-bottom:1.5em">참고 사이트</h2>
+            <ol style="list-style: none;text-align:left;">
+                <li style="padding-left:0.5em"><a href="http://codepen.io/" target="_blank">Codepen</a></li>
+	            <li style="padding-left:0.5em"><a href="https://validator.w3.org/" target="_blank">Markup Validation Service</a></li>
+	            <li style="padding-left:0.5em"><a href="http://caniuse.com/" target="_blank">Caniuse</a></li>
+	        </ol>
+            <!--<p class="fragment" data-fragment-index="2" style="text-align:left"><em><span class="tomato">UI</span>(사용자 인터페이스)는 곤란에 처한 초보자가 `10초` 안에 이해할 수 있도록 단순해야한다.</em></p>-->
+        </section>
+
+
+        <!--<section>-->
+            <!--<h2>원하는 사이트의 <span class="tomato">구조</span> 만들어보기</h2>-->
+        <!--</section>-->
+
+    </div>
+    <div class="state-background"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/js/reveal.min.js"></script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", init, false);
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    function init(){
+
+        var cblocks = document.querySelectorAll("pre code");
+
+        if(cblocks.length) {
+            for(var i=0, len=cblocks.length; i<len; i++) {
+                var dom = cblocks[i];
+                var html = dom.innerHTML;
+                html = html.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                dom.innerHTML = html;
+            }
+        }
+    }
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        rollingLinks:true,
+        slideNumber: false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        backgroundTransition: 'slide',
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Interpret Markdown in <section> elements
+//            { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+            // Syntax highlight for <code> elements
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+//            { src: 'lib/js/fullscreen-img.js'},
+            // Zoom in and out with Alt+click
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/zoom-js/zoom.min.js', async: true, condition: function() { return !!document.body.classList; } },
+
+
+            // Speaker notes
+//            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+            // Remote control your reveal.js presentation using a touch device
+//            { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+            // MathJax
+//            { src: 'plugin/math/math.js', async: true },
+//            { src: 'socket.io/socket.io.js', async: true },
+//            { src: 'plugin/notes-server/client.js', async: true }
+        ]
+    });
+
+</script>
+</body>
+</html>
